@@ -8,6 +8,7 @@ class PaymentsController < ApplicationController
       sort_order: "DESC",
       location_id: ENV['LOCATION_ID']
     ).body.payments #upto 100 paymetns will return
+    binding.pry
   end
 
   # GET /payments/1 or /payments/1.json
