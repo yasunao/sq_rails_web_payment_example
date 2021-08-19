@@ -6,7 +6,11 @@
   <thead>
     <tr>
       <th>payment_id</th>
-	  <th>price<th>
+	  <th>price</th>
+	  <th>card_brand</th>
+	  <th>last_4</th>
+	  <th>exp_month</th>
+	  <th>exp_year</th>
     </tr>
   </thead>
 
@@ -15,6 +19,10 @@
       <tr>
         <td><%=payment[:id]%></td>
 		<td><%="#{payment[:amount_money][:amount]}(#{payment[:amount_money][:currency]})"%></td>
+		<td><%=payment[:card_details][:card][:card_brand]%></td>
+		<td><%=payment[:card_details][:card][:last_4]%></td>
+		<td><%=payment[:card_details][:card][:exp_month]%></td>
+		<td><%=payment[:card_details][:card][:exp_year]%></td>
       </tr>
     <% end %>
   </tbody>
