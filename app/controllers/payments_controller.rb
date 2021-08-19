@@ -8,7 +8,6 @@ class PaymentsController < ApplicationController
       sort_order: "DESC",
       location_id: ENV['LOCATION_ID']
     ).body.payments #upto 100 paymetns will return
-    binding.pry
   end
 
   # GET /payments/1 or /payments/1.json
@@ -17,12 +16,14 @@ class PaymentsController < ApplicationController
 
   # GET /payments/new
   def new
-    @payment = Payment.new
+    gon.application_id=ENV['APPLICATION_ID']
+    gon.location_id=ENV['LOCATION_ID']
   end
 
   # POST /payments or /payments.json
   def create
-    @payment = Payment.new(payment_params)
+    binding.pry
+    raise
 
     respond_to do |format|
       if @payment.save
