@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
+    @notice=params[:notice]
     client=get_square_client
     @payments = client.payments.list_payments(
       sort_order: "DESC",
@@ -16,37 +17,27 @@ class PaymentsController < ApplicationController
 
   # GET /payments/new
   def new
+    @notice=params[:notice]
+    @price=params[:price]
     gon.application_id=ENV['APPLICATION_ID']
     gon.location_id=ENV['LOCATION_ID']
   end
 
   # POST /payments or /payments.json
   def create
-    binding.pry
-    raise
-
+    @payment=create_payment(params[:nonce],params[:price].to_i)
     respond_to do |format|
-      if @payment.save
+      if @payment.success?
         format.html { redirect_to @payment, notice: "Payment was successfully created." }
-        format.json { render :show, status: :created, location: @payment }
+        #format.json { render :show, status: :created, location: @payment }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
+        format.html { redirect_to action: :new, 'data-turbolinks': false,price: params[:price],notice: "Payment was unprocessable" }
+        #format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_payment
-      @payment = Payment.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def payment_params
-      params.fetch(:payment, {})
-    end
-    #
     def get_square_client
       access_token=ENV['SQUARE_ACCESS_TOKEN']
       location_id=ENV['LOCATION_ID']
@@ -61,5 +52,21 @@ class PaymentsController < ApplicationController
         environment: environment
       )
       return client
+    end
+    def create_payment(nonce, price)
+      client=self.get_square_client
+      location_id=ENV['LOCATION_ID']
+      result = client.payments.create_payment(
+        body: {
+          source_id: nonce,
+          idempotency_key: SecureRandom.uuid(),
+          amount_money: {
+            amount: price,
+            currency: "JPY"
+          },
+          location_id: location_id
+        }
+      )
+      return result
     end
 end

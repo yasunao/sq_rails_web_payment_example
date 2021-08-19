@@ -6,7 +6,8 @@
 <%end%>
 
 <div class="container">
-	<h1>New Payment</h1>	
+	<h1>New Payment</h1>
+	<p id="notice"><%= @notice %></p>
 	<div class="col-md-8 order-md-1">
 	  	<%= form_with(id: "payment-form",url: payments_path, method: :post, local: true) do |f| %>
 			<div class="mb-3">
