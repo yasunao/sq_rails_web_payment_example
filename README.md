@@ -7,13 +7,18 @@ Things you may want to cover:
 
 * Ruby version: 2.7.1
 
-* Deployment instructions
+## Deployment instructions
 
-- [ ] create file .env , add following lines.
-	APPLICATION_ID="sandbox-?"
-	LOCATION_ID="?"
-	SQUARE_ACCESS_TOKEN="?"
+1. create file .env at root of project folder
+2. In that .env, add following lines.
+
+```
+APPLICATION_ID="sandbox-?"
+LOCATION_ID="?"
+SQUARE_ACCESS_TOKEN="?"
+```
 	
-- [ ] rails webpacker:install
-- [ ] rails webpacker:compile
-- [ ] start server
+3. rails webpacker:install
+4. rails webpacker:compile
+5. bundle install
+6. start server(ex. rails s)
