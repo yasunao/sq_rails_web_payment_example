@@ -4,11 +4,10 @@ class PaymentsController < ApplicationController
   # GET /payments or /payments.json
   def index
     client=get_square_client
-    @payments = client.payments.list_payments.body.payments #upto 100 paymetns will return
     @payments = client.payments.list_payments(
       sort_order: "DESC",
       location_id: ENV['LOCATION_ID']
-    )
+    ).body.payments #upto 100 paymetns will return
   end
 
   # GET /payments/1 or /payments/1.json

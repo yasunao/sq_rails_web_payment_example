@@ -5,20 +5,15 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+* Ruby version: 2.7.1
 
 * Deployment instructions
 
-* ...
+- [ ] create file .env , add following lines.
+	APPLICATION_ID="sandbox-?"
+	LOCATION_ID="?"
+	SQUARE_ACCESS_TOKEN="?"
+	
+- [ ] rails webpacker:install
+- [ ] rails webpacker:compile
+- [ ] start server
