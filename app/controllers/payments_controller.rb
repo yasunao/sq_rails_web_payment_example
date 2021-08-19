@@ -1,5 +1,4 @@
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: %i[ show edit update destroy ]
 
   # GET /payments or /payments.json
   def index
@@ -13,6 +12,8 @@ class PaymentsController < ApplicationController
 
   # GET /payments/1 or /payments/1.json
   def show
+    @payment = params[:payment].nil? ? "Payment.find(params[:id])" : params[:payment]
+    @notice=params[:notice]
   end
 
   # GET /payments/new
@@ -28,7 +29,7 @@ class PaymentsController < ApplicationController
     @payment=create_payment(params[:nonce],params[:price].to_i)
     respond_to do |format|
       if @payment.success?
-        format.html { redirect_to @payment, notice: "Payment was successfully created." }
+        format.html { redirect_to payment_path(@payment.body.payment[:id], payment: @payment.body.payment, notice: "Payment was successfully created." )}
         #format.json { render :show, status: :created, location: @payment }
       else
         format.html { redirect_to action: :new, 'data-turbolinks': false,price: params[:price],notice: "Payment was unprocessable" }
