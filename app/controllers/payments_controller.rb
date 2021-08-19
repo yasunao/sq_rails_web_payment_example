@@ -3,8 +3,12 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    binding.pry
-    @payments = Payment.all
+    client=get_square_client
+    @payments = client.payments.list_payments.body.payments #upto 100 paymetns will return
+    @payments = client.payments.list_payments(
+      sort_order: "DESC",
+      location_id: ENV['LOCATION_ID']
+    )
   end
 
   # GET /payments/1 or /payments/1.json
@@ -40,5 +44,21 @@ class PaymentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def payment_params
       params.fetch(:payment, {})
+    end
+    #
+    def get_square_client
+      access_token=ENV['SQUARE_ACCESS_TOKEN']
+      location_id=ENV['LOCATION_ID']
+      case Rails.env
+      when"production"
+        environment="production"
+      else
+        environment='sandbox'
+      end
+      client = Square::Client.new(
+        access_token: access_token,
+        environment: environment
+      )
+      return client
     end
 end
