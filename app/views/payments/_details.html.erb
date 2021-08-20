@@ -6,9 +6,16 @@
 					<%=key.to_s%>: <%= render partial: 'details', locals: { details: value }%>
 				</li>
 			<%elsif value.class==Array then %>
-		   		<li>
-					<%=key.to_s%>: <%=value%>
-				</li>
+				<%value.each_with_index do |hash,index|%>
+					<li><%=key.to_s%>:
+						<ul>
+							<li>
+								<%="#{key.to_s}(#{index})"%>
+								<%= render partial: 'details', locals: { details: hash }%>
+							</li>
+						</ul>
+					</li>
+				<%end%>
 			<%else%>
 		   		<li>
 					<%=key.to_s%>: <%=value%>

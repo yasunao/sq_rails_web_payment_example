@@ -4,7 +4,6 @@ class PaymentsController < ApplicationController
   def index
     @notice=params[:notice]
     @payments = list_payment
-    
   end
 
   # GET /payments/1 or /payments/1.json
