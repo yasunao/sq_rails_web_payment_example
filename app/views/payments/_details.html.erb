@@ -1,0 +1,19 @@
+<div class="container">
+	<%details.each do |key,value|%>
+		<ul>
+			<%if value.class==Hash then %>
+				<li>
+					<%=key.to_s%>: <%= render partial: 'details', locals: { details: value }%>
+				</li>
+			<%elsif value.class==Array then %>
+		   		<li>
+					<%=key.to_s%>: <%=value%>
+				</li>
+			<%else%>
+		   		<li>
+					<%=key.to_s%>: <%=value%>
+				</li>
+			<%end%>
+		</ul>
+	<%end%>
+</div>

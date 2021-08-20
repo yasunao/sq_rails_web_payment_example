@@ -1,3 +1,10 @@
-<p id="notice"><%= @notice %></p>
-
-<%= link_to 'Back', payments_path %>
+<h1>Details of payment</h1>
+<div class="container">
+	<p id="notice"><%= @notice %></p>
+    
+	<%@payment.each do |key,value|%>
+		<%= render partial: 'details', locals: { details: {key=>value}} %>
+	<%end%>   
+   
+	<%= link_to 'Back', payments_path %>
+</div>
