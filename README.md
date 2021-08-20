@@ -1,7 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is based on following documents.
+
+- [https://developer.squareup.com/docs/web-payments/take-card-payment](https://developer.squareup.com/docs/web-payments/take-card-payment)
+
+- [https://github.com/square/web-payments-quickstart/blob/main/public/examples/card.html](https://github.com/square/web-payments-quickstart/blob/main/public/examples/card.html)
 
 Things you may want to cover:
 
@@ -18,7 +21,7 @@ LOCATION_ID="?"
 SQUARE_ACCESS_TOKEN="?"
 ```
 	
-3. rails webpacker:install (if you )
-4. rails webpacker:compile
+3. rails webpacker:install (if you need.)
+4. rails webpacker:compile (if you need.)
 5. bundle install
 6. start server(ex. rails s)
