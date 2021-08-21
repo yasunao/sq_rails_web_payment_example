@@ -60,6 +60,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ###additonal gems
 gem 'square.rb', '>= 12.0.0.0'
 gem 'dotenv-rails'
-gem 'gon'
 gem 'bootstrap', '~> 5.1.0'
 gem 'jquery-rails'

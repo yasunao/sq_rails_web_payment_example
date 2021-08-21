@@ -16,8 +16,6 @@ class PaymentsController < ApplicationController
   def new
     @notice=params[:notice]
     @price=params[:price]
-    gon.application_id=ENV['APPLICATION_ID']
-    gon.location_id=ENV['LOCATION_ID']
   end
 
   # POST /payments or /payments.json

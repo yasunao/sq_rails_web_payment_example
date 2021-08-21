@@ -1,5 +1,5 @@
-const appId = gon.application_id;
-const locationId = gon.location_id;
+const appId = process.env.APPLICATION_ID;
+const locationId = process.env.LOCATION_ID;
 
 async function initializeCard(payments) {
   const card = await payments.card();
