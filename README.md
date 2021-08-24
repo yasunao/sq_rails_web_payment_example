@@ -1,10 +1,10 @@
 # README
-
+Quickstart for using Square's Web Payments SDK on Rails.
 This project is based on following documents.
 
 - [https://developer.squareup.com/docs/web-payments/take-card-payment](https://developer.squareup.com/docs/web-payments/take-card-payment)
 
-- [https://github.com/square/web-payments-quickstart/blob/main/public/examples/card.html](https://github.com/square/web-payments-quickstart/blob/main/public/examples/card.html)
+- [https://github.com/square/web-payments-quickstart/blob/main/public/examples/card.html](https://github.com/square/web-payments-quickstart)
 
 Things you may want to cover:
 
@@ -13,7 +13,7 @@ Things you may want to cover:
 ## Deployment instructions
 
 1. create file .env at root of project folder.
-2. In that .env, add following lines,and replace "?" with your environment values appropriately.
+2. In that .env, add following lines,and replace "?" with your sandbox environment values appropriately.
 
 ```
 APPLICATION_ID="sandbox-?"
